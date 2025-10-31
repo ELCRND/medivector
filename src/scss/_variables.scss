@@ -1,0 +1,19 @@
+@use "helpers" as *;
+
+:root {
+  --color-white: #ffffff;
+  --color-black: #000;
+  --color-gray: #c0c0c0;
+  --color-gray--light: #f6f6f6;
+  --color-red: #ff0000;
+  --color-blue: #004d7d;
+  --color-blue--light: #abd1e9;
+  --color-blue--dark: #002942;
+
+  --font-family: "Montserrat", sans-serif;
+
+  --container-width: #{rem(1220)};
+  --container-padding-x: #{rem(10)};
+
+  --transition-duration: 0.2s;
+}

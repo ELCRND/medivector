@@ -1,0 +1,16 @@
+<svg width="716" height="356" viewBox="0 0 716 356" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M537.768 0.353516C635.88 98.4662 635.88 257.538 537.768 355.651" stroke="white"/>
+<path d="M177.65 0.353516C79.5375 98.4662 79.5375 257.538 177.65 355.651" stroke="white"/>
+<circle cx="582.502" cy="62.1887" r="9.5" fill="white"/>
+<circle cx="9.5" cy="9.5" r="9.5" transform="matrix(-1 0 0 1 142.416 52.6887)" fill="white"/>
+<circle cx="611.502" cy="176.189" r="9.5" fill="white"/>
+<circle cx="9.5" cy="9.5" r="9.5" transform="matrix(-1 0 0 1 113.416 166.689)" fill="white"/>
+<circle cx="582.502" cy="295.189" r="9.5" fill="white"/>
+<circle cx="9.5" cy="9.5" r="9.5" transform="matrix(-1 0 0 1 142.416 285.689)" fill="white"/>
+<line x1="52" y1="62.1888" x2="135" y2="62.1888" stroke="white"/>
+<line y1="-0.5" x2="83" y2="-0.5" transform="matrix(-1 0 0 1 663 62.6888)" stroke="white"/>
+<line x1="11.998" y1="176.689" x2="110.003" y2="176.689" stroke="white"/>
+<line y1="-0.5" x2="98.0051" y2="-0.5" transform="matrix(1 0 0 -1 602.998 175.189)" stroke="white"/>
+<line x1="52" y1="295.189" x2="133" y2="295.189" stroke="white"/>
+<line y1="-0.5" x2="81" y2="-0.5" transform="matrix(-1 0 0 1 663 295.689)" stroke="white"/>
+</svg>

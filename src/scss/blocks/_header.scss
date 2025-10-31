@@ -1,0 +1,406 @@
+@use "../helpers" as *;
+
+.header {
+  height: rem(97);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  background: var(--color-white);
+
+  @include tablet {
+    height: rem(67);
+  }
+}
+
+.header__container {
+  height: 100%;
+
+  @include tablet {
+    max-width: 100%;
+    padding-inline: 0;
+  }
+}
+
+.header__wrapper {
+  height: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto auto 1fr auto;
+  grid-template-areas:
+    "info socials search acc"
+    "info nav nav nav";
+
+  @include tablet {
+    padding-right: rem(16);
+    display: flex;
+    gap: rem(20);
+  }
+}
+
+.header__info {
+  grid-area: info;
+  width: fit-content;
+  height: 100%;
+  margin-right: rem(23);
+  padding-top: rem(14);
+  padding-inline: rem(12);
+  background-color: var(--color-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    margin-right: auto;
+    padding: rem(7) rem(14) 0 rem(10);
+  }
+
+  &-text {
+    max-width: rem(161);
+    font-size: rem(12);
+    font-weight: 400;
+    color: var(--color-white);
+    line-height: normal;
+
+    @include tablet {
+      max-width: rem(134);
+      font-size: rem(10);
+      margin-left: auto;
+      letter-spacing: -0.02em;
+    }
+  }
+  &-logo {
+    @include tablet {
+      width: rem(170);
+      height: rem(25);
+      flex-shrink: 0;
+    }
+  }
+}
+
+.header__menu {
+  display: contents;
+
+  &--open {
+    translate: 0 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-white);
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 0 -100%;
+    transition: translate var(--transition-duration) ease;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9;
+  }
+
+  &-logo {
+    height: 40px;
+    margin-bottom: rem(17);
+    padding-top: 8px;
+    background-color: var(--color-blue);
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+}
+
+.header__socials {
+  grid-area: socials;
+  align-self: flex-end;
+  display: flex;
+  gap: rem(20);
+  padding-bottom: 2px;
+
+  @include tablet {
+    margin-inline: rem(16);
+    align-self: start;
+    order: 3;
+    flex-direction: column-reverse;
+  }
+
+  &-link {
+    &:first-of-type {
+      @include flex-center;
+      width: rem(35);
+      height: rem(35);
+
+      border-radius: 50%;
+      background-color: var(--color-blue);
+
+      @include hover {
+        background-color: var(--color-blue--dark);
+      }
+      @include active {
+        background-color: var(--color-blue--light);
+      }
+    }
+
+    &:last-of-type {
+      display: flex;
+      align-items: center;
+      gap: rem(7);
+      font-weight: 400;
+      font-size: rem(14);
+
+      @include hover {
+        path {
+          fill: var(--color-blue--dark);
+        }
+      }
+      @include active {
+        path {
+          fill: var(--color-blue--light);
+        }
+      }
+
+      @include tablet {
+        margin-left: 6px;
+      }
+    }
+  }
+}
+
+.header__search {
+  grid-area: search;
+  justify-self: flex-end;
+  align-self: flex-end;
+  width: rem(307);
+  margin-right: rem(14);
+  padding-bottom: 2px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  border-radius: 100px;
+
+  @include tablet {
+    order: 0;
+    margin-inline: rem(16);
+    margin-bottom: rem(22);
+  }
+  @include tablet-above {
+    &:has(.header__search-input:not(:placeholder-shown):focus) {
+      .header__search-btn {
+        opacity: 1;
+        z-index: 2;
+        right: 0;
+      }
+    }
+  }
+  @include mobile-s {
+    width: 288px;
+  }
+
+  &-input {
+    width: 100%;
+    height: 100%;
+    padding-left: rem(16);
+    padding-right: rem(16);
+    position: absolute;
+    translate: 100% 0;
+    overflow: hidden;
+    border: none;
+    background-color: var(--color-gray--light);
+    transition: translate var(--transition-duration) ease;
+    z-index: 1;
+
+    @include tablet {
+      translate: 0 0 !important;
+    }
+
+    @include tablet-above {
+      &:focus {
+        translate: 0 0;
+
+        & + .header__search-icon {
+          z-index: 0;
+          scale: 0.95;
+        }
+      }
+    }
+
+    &::placeholder {
+      font-style: italic;
+      font-weight: 400;
+      font-size: 12px;
+      color: #c0c0c0;
+    }
+  }
+  &-icon,
+  &-btn {
+    @include flex-center;
+    margin-left: auto;
+    width: rem(35);
+    height: rem(35);
+    border-radius: 50%;
+    background-color: var(--color-blue);
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+
+    @include hover {
+      background-color: var(--color-blue--dark);
+    }
+    @include active {
+      background-color: var(--color-blue--light);
+    }
+  }
+
+  &-btn {
+    position: absolute;
+
+    @include tablet-above {
+      opacity: 0;
+      transition: none;
+    }
+    @include tablet {
+      right: 0;
+    }
+  }
+}
+
+.header__account-btn {
+  grid-area: acc;
+  justify-self: flex-end;
+  align-self: flex-end;
+  @include flex-center;
+  width: rem(182);
+  height: rem(35);
+  margin-bottom: 2px;
+  border-radius: 50px;
+  background-color: var(--color-blue);
+  font-weight: 700;
+  font-size: rem(14);
+  color: var(--color-white);
+
+  @include tablet-above {
+    @include hover {
+      background-color: var(--color-blue--dark);
+      color: var(--color-white);
+    }
+    @include active {
+      background-color: var(--color-blue--light);
+      color: var(--color-white);
+    }
+  }
+
+  @include tablet {
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border-radius: 0;
+    align-self: center;
+    span {
+      display: none;
+    }
+  }
+}
+
+.header__account-icon {
+  display: none;
+
+  @include hover {
+    path {
+      fill: var(--color-blue--dark);
+    }
+  }
+  @include active {
+    path {
+      fill: var(--color-blue--light);
+    }
+  }
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.header__navigation {
+  grid-area: nav;
+  padding-top: 2px;
+
+  @include tablet {
+    order: 1;
+    margin-inline: rem(16);
+    margin-bottom: rem(29);
+    padding-bottom: rem(27);
+    border-bottom: 1px solid var(--color-blue);
+  }
+
+  &-list {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-direction: column;
+      justify-content: start;
+      gap: rem(16);
+    }
+  }
+  &-item {
+    font-weight: 700;
+    font-size: rem(15);
+  }
+}
+
+.header__menu-btn {
+  grid-area: menu-btn;
+  display: none;
+  width: rem(20);
+  height: rem(16);
+  flex-direction: column;
+  justify-content: space-between;
+
+  &--open {
+    position: absolute !important;
+    top: 13px;
+    right: 16px;
+    z-index: 10;
+    justify-content: center;
+    span {
+      background-color: var(--color-white) !important;
+
+      &:first-of-type {
+        rotate: 45deg;
+        translate: 0 100%;
+      }
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+      &:last-of-type {
+        rotate: -45deg;
+        translate: 0 -100%;
+      }
+    }
+  }
+
+  @include hover {
+    span {
+      background-color: var(--color-blue--dark);
+    }
+  }
+  @include active {
+    span {
+      background-color: var(--color-blue--light);
+    }
+  }
+
+  span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-blue);
+  }
+
+  @include tablet {
+    display: flex;
+  }
+}

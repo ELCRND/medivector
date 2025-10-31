@@ -1,0 +1,86 @@
+@use "../helpers" as *;
+
+.soon {
+  padding-bottom: rem(54);
+
+  @include mobile-s {
+    padding-top: rem(60);
+  }
+
+  @include mobile-xs {
+    padding-top: rem(100);
+  }
+}
+
+.soon__title {
+  margin-bottom: rem(34);
+  font-weight: 700;
+  font-size: rem(22);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-blue);
+}
+
+.soon__list {
+  display: flex;
+  gap: rem(26);
+  margin-bottom: rem(33);
+}
+
+.soon-event {
+  width: rem(285);
+  height: rem(300);
+  padding: rem(12) rem(16);
+  border: 1px solid var(--color-blue);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+}
+
+.soon-event__date {
+  margin-bottom: rem(13);
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-blue);
+  line-height: 149%;
+}
+
+.soon-event__date-day {
+  font-size: rem(38);
+}
+
+.soon-event__date-month {
+  font-size: rem(16);
+}
+.soon-event__date-year {
+  font-weight: 700;
+  font-size: rem(16);
+  color: var(--color-blue--light);
+}
+
+.soon-event__description {
+  margin-bottom: auto;
+  font-weight: 500;
+  font-size: rem(14);
+  line-height: 129%;
+  color: var(--color-black);
+  display: -webkit-box;
+  line-clamp: 7;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.soon-event__location {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  font-weight: 700;
+  font-size: rem(15);
+  text-transform: uppercase;
+  color: var(--color-blue);
+}
